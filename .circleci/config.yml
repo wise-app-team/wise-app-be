@@ -7,7 +7,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
-    working_directory: ~/WiseAppBE
+    working_directory: ~/wise-app-be
     docker:
       - image: cimg/ruby:3.1.1
         environment:
@@ -16,14 +16,14 @@ jobs:
           RAILS_ENV: test
       - image: postgres:13.2
         environment:
-          POSTGRES_USER: WiseAppBE
-          POSTGRES_DB: WiseAppBE_test
-          POSTGRES_PASSWORD:
+          POSTGRES_USER: wise_app_be
+          POSTGRES_DB: wise_app_be_test
+          POSTGRES_PASSWORD: 
     executor: ruby/default
     steps:
       - checkout
       - run:
-          name: WiseAppBE
+          name: wise-app-be
           command: bundle -v
       - checkout
       - run: bundle install --path vendor/bundle
