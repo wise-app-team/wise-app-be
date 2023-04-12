@@ -95,6 +95,8 @@ Stretch goals include adding a social aspect to help users find events in their 
 
 [^1](https://www.kff.org/health-reform/issue-brief/data-note-prescription-drugs-and-older-adults/) 
 
+This is the back end repo, the front end repo is located [here](https://github.com/wise-app-team/wise-app-fe)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
