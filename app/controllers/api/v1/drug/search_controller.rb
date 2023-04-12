@@ -1,6 +1,6 @@
 class Api::V1::Drug::SearchController < ApplicationController
 	def find_all
-		drugs = Drug.search_by_name(params[:name])
+		drugs = Drug.all
 
 		if drugs.empty?
 			render json: { error: 'No drugs found' }, status: 404

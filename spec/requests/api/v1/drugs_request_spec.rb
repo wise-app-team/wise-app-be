@@ -6,11 +6,11 @@ describe 'Drugs API' do
   context 'when a drug exists' do
     describe 'GET /drugs' do
       it 'returns a list of drugs from a search parameter' do
-        ty = create(:drug, name: 'Tylenol')
-        as = create(:drug, name: 'Aspirin')
-        viag = create(:drug, name: 'Viagra')
+        ty = Drug.new(name: 'Tylenol', synonym: 'Acetaminophen')
+        as = Drug.new(name: 'Aspirin', synonym: 'Acetylsalicylic acid')
+        viag = Drug.new(name: 'Viagra', synonym: 'Sildenafil')
 
-        get '/api/v1/drugs/find_all?name=ty'
+        get '/api/v1/drugs/find_all?name=tyle'
 
         expect(response).to be_successful
 
