@@ -37,20 +37,24 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 gem 'faraday'
 
+
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-	gem 'pry'
-	gem 'factory_bot_rails'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry'
 end
 
 group :development do
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rubocop-capybara'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
   gem 'orderly'
