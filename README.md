@@ -102,6 +102,7 @@ Stretch goals include adding a social aspect to help users find events in their 
 ### Built With
 
 * [![Rails]][Rails-url]
+* [![Circle-CI]][Circle-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
