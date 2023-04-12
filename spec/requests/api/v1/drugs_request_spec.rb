@@ -27,5 +27,23 @@ describe 'Drugs API' do
 				end
 			end
 		end
+
+		context "when a drug doesnt exist" do
+			describe 'GET /drugs' do
+
+				it 'returns an error if no drugs found' do
+					as = create(:drug, name: 'Aspirin')
+					viag = create(:drug, name: 'Viagra')
+
+					get '/api/v1/drugs/find_all?name=ty'
+
+					expect(response).to_not be_successful
+
+					drugs = JSON.parse(response.body, symbolize_names: true)
+					
+					expect(drugs[:error]).to eq('No drugs found')
+				end
+			end
+		end
 	end
 end

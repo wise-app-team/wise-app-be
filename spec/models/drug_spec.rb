@@ -13,6 +13,15 @@ RSpec.describe Drug, type: :model do
 			viag = create(:drug, name: 'Viagra')
 
 			expect(Drug.search_by_name('ty')).to eq([ty])
+			expect(Drug.search_by_name('ty')).to_not eq([as])
+		end
+
+		it 'returns an error if no drugs found' do
+			as = create(:drug, name: 'Aspirin')
+			viag = create(:drug, name: 'Viagra')
+
+			expect(Drug.search_by_name('ty')).to eq([])
+			
 		end
 	end
 end
