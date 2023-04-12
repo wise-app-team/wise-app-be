@@ -120,7 +120,7 @@ This is an example of how to list things you need to use the software and how to
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
    ```sh
-   git clone git@github.com:wise-app-team/wise-app-fe.git
+   git clone git@github.com:wise-app-team/wise-app-be.git
    ```
 3. Install NPM packages
    ```sh
@@ -252,16 +252,16 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/wise-app-team/wise-app-be.svg?style=for-the-badge
+[contributors-url]: https://github.com/wise-app-team/wise-app-be/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
+[forks-shield]: https://img.shields.io/github/forks/wise-app-team/wise-app-be.svg?style=for-the-badge
+[forks-url]: https://github.com/wise-app-team/wise-app-be/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
+[stars-shield]: https://img.shields.io/github/stars/wise-app-team/wise-app-be.svg?style=for-the-badge
+[stars-url]: https://github.com/wise-app-team/wise-app-be/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/wise-app-team/wise-app-be.svg?style=for-the-badge
 [issues-url]: https://github.com/wise-app-team/wise-app-be/issues
 
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
