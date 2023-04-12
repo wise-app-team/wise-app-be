@@ -95,16 +95,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<!-- Above is left as is until we have the full list of what was used -->
+* [![Rails]][Rails-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,18 +190,59 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/114712752?v=4" alt="Profile" width="80" height="80">
+  <p align="center">
+    Kassandra Leyba<br>
+    <a href="https://github.com/kassandraleyba">Github: https://github.com/kassandraleyba</a>
+  </p>
+</div>
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/117024855?v=4" alt="Profile" width="80" height="80">
+  <p align="center">
+    Bradley Dunlap<br>
+    <a href="https://github.com/brad-dunlap">Github: brad-dunlap</a>
+  </p>
+</div>
+
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/112577589?v=4" alt="Profile" width="80" height="80">
+  <p align="center">
+    Meredith Trevino<br>
+    <a href="https://github.com/MATrevino">Github: MATrevino</a>
+  </p>
+</div>
+
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/108768349?v=4" alt="Profile" width="80" height="80">
+  <p align="center">
+    Max MacGillivray<br>
+    <a href="https://github.com/MoxieMax">Github: MoxieMax</a>
+  </p>
+</div>
+
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/17149928?v=4" alt="Profile" width="80" height="80">
+  <p align="center">
+    Isaac Alter<br>
+    <a href="https://github.com/Isaac3924">Github: Isaac3924</a>
+  </p>
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- PROJECT MANAGER -->
+## Project Manager
 
+* Abdul Redd
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* ["The Best README Template" by Github User othneil](https://github.com/othneildrew/Best-README-Template)
 * []()
 * []()
 
@@ -256,3 +288,6 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com 
+
+[Rails]: https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?logo=ruby-on-rails&logoColor=white&style=for-the-badge
+[Rails-url]: https://rubyonrails.org 
