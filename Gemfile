@@ -65,5 +65,6 @@ group :test do
 	gem 'database_cleaner-active_record'
 end
 
+gem 'jsonapi-serializer'
 gem 'figaro'
 
