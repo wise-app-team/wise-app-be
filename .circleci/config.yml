@@ -17,7 +17,7 @@ jobs:
       - image: postgres:13.2
         environment:
           POSTGRES_USER: postgres
-          POSTGRES_DB: wise_app_be_test
+          POSTGRES_DB: wise_app_be_development
           POSTGRES_PASSWORD: postgres
     executor: ruby/default
     steps:
