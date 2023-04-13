@@ -22,7 +22,7 @@ jobs:
     executor: ruby/default
     steps:
       - checkout
-      - run:
+      - run: 
           name: wise-app-be
           command: bundle -v
       - checkout
