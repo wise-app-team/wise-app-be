@@ -1,5 +1,3 @@
-# spec/requests/users_spec.rb
-
 RSpec.describe "Users", type: :request do
   describe "POST /api/v1/users" do
     let(:valid_attributes) do

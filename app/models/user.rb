@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_and_belongs_to_many :drugs
+  has_many :drug_users
+  has_many :drugs, through: :drug_users
   has_secure_password
 
   validates :name, presence: true

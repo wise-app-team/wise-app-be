@@ -1,5 +1,7 @@
 class Drug < ApplicationRecord
-  has_and_belongs_to_many :users
+  has_many :drug_users
+  has_many :users, through: :drug_users
+
   validates :name, presence: true
-  validates :rxcui, presence: true, uniqueness: true
+  validates :rxcui, presence: true
 end
