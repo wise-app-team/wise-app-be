@@ -22,12 +22,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "drugs_users", id: false, force: :cascade do |t|
+  create_table "user_drugs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "drug_id", null: false
+    t.integer "frequency"
+    t.time "dose1"
+    t.time "dose2"
+    t.time "dose3"
+    t.boolean "prn"
+    t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "drug_id"], name: "index_drugs_users_on_user_id_and_drug_id"
+    t.index ["drug_id"], name: "index_user_drugs_on_drug_id"
+    t.index ["user_id"], name: "index_user_drugs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "user_drugs", "drugs"
+  add_foreign_key "user_drugs", "users"
 end
