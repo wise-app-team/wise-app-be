@@ -9,6 +9,6 @@ RSpec.describe Drug, type: :model do
   
   describe 'relationships' do
     it { should have_many(:users) }
-    it { should have_many(:drug_users) }
+    it { should have_many(:user_drugs) }
   end
 end

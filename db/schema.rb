@@ -14,7 +14,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "drug_users", force: :cascade do |t|
+  create_table "drugs", force: :cascade do |t|
+    t.string "rxcui"
+    t.string "name"
+    t.string "synonym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_drugs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "drug_id", null: false
     t.integer "frequency"
@@ -25,16 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["drug_id"], name: "index_drug_users_on_drug_id"
-    t.index ["user_id"], name: "index_drug_users_on_user_id"
-  end
-
-  create_table "drugs", force: :cascade do |t|
-    t.string "rxcui"
-    t.string "name"
-    t.string "synonym"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["drug_id"], name: "index_user_drugs_on_drug_id"
+    t.index ["user_id"], name: "index_user_drugs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "drug_users", "drugs"
-  add_foreign_key "drug_users", "users"
+  add_foreign_key "user_drugs", "drugs"
+  add_foreign_key "user_drugs", "users"
 end
