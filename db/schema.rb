@@ -10,13 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_12_172553) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "drugs", force: :cascade do |t|
+    t.string "rxcui"
     t.string "name"
     t.string "synonym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drugs_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "drug_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "drug_id"], name: "index_drugs_users_on_user_id_and_drug_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.date "birthday"
+    t.string "phone_number"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
