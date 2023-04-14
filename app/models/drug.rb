@@ -1,10 +1,5 @@
-# frozen_string_literal: true
-
 class Drug < ApplicationRecord
+  has_and_belongs_to_many :users
   validates :name, presence: true
-  validates :synonym, presence: true
-
-  def self.search_by_name(name)
-    where('name ILIKE ?', "%#{name}%")
-  end
+  validates :rxcui, presence: true, uniqueness: true
 end
