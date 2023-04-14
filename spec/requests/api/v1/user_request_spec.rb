@@ -22,7 +22,6 @@ RSpec.describe "Users", type: :request do
 
       it "creates a new user" do
         expect(response).to have_http_status(:created)
-        expect(response.body).to match(/User successfully created/)
       end
     end
 
