@@ -19,7 +19,7 @@ RSpec.describe "Users", type: :request do
 
     context "when the request is valid" do
       before { post "/api/v1/users", params: valid_attributes }
-
+      
       it "creates a new user" do
         expect(response).to have_http_status(:created)
       end
