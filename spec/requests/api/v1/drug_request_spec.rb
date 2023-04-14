@@ -3,8 +3,8 @@ RSpec.describe "Drugs", type: :request do
     let(:valid_attributes) do
       {
         drug: {
-          name: "Test Drug",
           rxcui: "1234567890",
+          name: "Test Drug",
           synonym: "Test Synonym"
         }
       }
@@ -16,6 +16,9 @@ RSpec.describe "Drugs", type: :request do
       it "creates a new drug" do
         expect(response).to have_http_status(:created)
         expect(response.body).to match(/Drug successfully created/)
+
+        expect(Drug.all).to_not be_empty
+        expect(Drug.all.count).to eq(1)
       end
     end
 

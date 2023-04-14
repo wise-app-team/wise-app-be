@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :drugs, only: %i[create]
       resources :users, only: %i[create update destroy] do
-        resources :drugs, only: %i[index create update destroy]
+        resources :drugs, only: %i[index create update destroy], to: 'user_drugs'
       end
     end
   end
