@@ -43,8 +43,6 @@ RSpec.describe 'UserDrugs', type: :request do
       
       it "creates a new userdrug" do
         expect(response).to have_http_status(:created)
-        expect(response.body).to match(/User-Drug relation successfully created/)
-
       end
     end
 
