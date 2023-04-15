@@ -2,11 +2,32 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render json:{success: "User successfully created."}, status: :created
+      render json: UserSerializer.new(@user), status: :created
 
     else 
       render json:{error: "ERROR: User not created"}, status: :bad_request
     end
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    @user.update(user_params)
+    if @user.save
+      render json: UserSerializer.new(@user), status: :ok
+
+    else 
+      render json:{error: "ERROR: Unable to edit user"}, status: :bad_request
+    end
+  end
+
+  def destroy
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      @user.destroy
+    else
+      render json:{error: "ERROR: User not found"}, status: :bad_request
+    end   
   end
 
   private
