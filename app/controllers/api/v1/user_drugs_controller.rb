@@ -8,6 +8,20 @@ class Api::V1::UserDrugsController < ApplicationController
     end
   end
 
+  def update
+    @user_drug = UserDrug.find(params[:id])
+
+    @user_drug.update(user_drug_params)
+    if @user_drug.save
+      render json: {success: "User-Drug relation successfully updated"}, status: :ok
+
+      # The below code is for the actual seriualized JSON!
+      # render json: UserDrugSerializer.new(@user_drug), status: :ok
+    else 
+      render json:{error: "ERROR: Unable to edit user-drug"}, status: :bad_request
+    end
+  end
+
 	private
 	def user_drug_params
 		params.require(:user_drug).permit(:user_id, :drug_id, :dose1, :dose2, :dose3, :prn, :notes)

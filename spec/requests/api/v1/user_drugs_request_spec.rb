@@ -58,22 +58,24 @@ RSpec.describe 'UserDrugs', type: :request do
   end
 
   describe 'PATCH /api/v1/users/:id/drugs' do
+    before { post "/api/v1/user_drugs", params: valid_attributes } 
     context "when the request is valid" do
-      before { post "/api/v1/user_drugs", params: valid_attributes } 
-      before { patch "/api/v1/user_drugs", params: edit_attributes } 
       
       it "edits existing userdrug" do
-        expect(response).to have_http_status(:ok)
-        expect(response.body).to match(/User-Drug relation successfully created/)
+        user_drug = UserDrug.last
+        patch "/api/v1/user_drugs/#{user_drug.id}", params: edit_attributes
 
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to match(/User-Drug relation successfully updated/)
       end
     end
 
     context "when the request is invalid" do
-      before { post "/api/v1/user_drugs", params: { user_drug: { dose1: "" } } }
 
       it "returns a validation failure message" do
-        expect(response.body).to match(/ERROR: User drug not created/)
+        user_drug = UserDrug.last
+        patch "/api/v1/user_drugs/#{user_drug.id}", params: { user_drug: { user_id: "" } }
+        expect(response.body).to match(/ERROR: Unable to edit user-drug/)
       end
     end
   end
