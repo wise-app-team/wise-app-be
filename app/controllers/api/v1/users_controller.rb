@@ -23,11 +23,11 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     if User.exists?(params[:id])
-			@user = User.find(params[:id])
+      @user = User.find(params[:id])
       @user.destroy
     else
       render json:{error: "ERROR: User not found"}, status: :bad_request
-    end
+    end   
   end
 
   private

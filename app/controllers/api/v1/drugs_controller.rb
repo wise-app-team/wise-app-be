@@ -1,6 +1,7 @@
 class Api::V1::DrugsController < ApplicationController
   def create
     @drug = Drug.new(drug_params)
+    # require 'pry'; binding.pry
     if @drug.save
       render json: DrugSerializer.new(@drug), status: :created
     else 

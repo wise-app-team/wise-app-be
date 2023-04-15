@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
   create_table "user_drugs", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "drug_id", null: false
+    t.integer "frequency"
     t.time "dose1"
     t.time "dose2"
     t.time "dose3"
