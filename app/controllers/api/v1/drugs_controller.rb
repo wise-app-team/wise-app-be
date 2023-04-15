@@ -2,7 +2,7 @@ class Api::V1::DrugsController < ApplicationController
   def create
     @drug = Drug.new(drug_params)
     if @drug.save
-      render json:{success: "Drug successfully created."}, status: :created
+      render json: DrugSerializer.new(@drug), status: :created
     else 
       render json:{error: "ERROR: Drug not created"}, status: :bad_request
     end

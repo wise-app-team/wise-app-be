@@ -15,7 +15,6 @@ RSpec.describe "Drugs", type: :request do
 
       it "creates a new drug" do
         expect(response).to have_http_status(:created)
-        expect(response.body).to match(/Drug successfully created/)
 
         expect(Drug.all).to_not be_empty
         expect(Drug.all.count).to eq(1)
