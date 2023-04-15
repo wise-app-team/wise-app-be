@@ -37,7 +37,7 @@ RSpec.describe 'UserDrugs', type: :request do
     }
   end
 
-  describe 'POST /api/v1/users/:id/drugs' do
+  describe 'POST /api/v1/user_drugs' do
     context "when the request is valid" do
       before { post "/api/v1/user_drugs", params: valid_attributes } 
       
@@ -57,13 +57,12 @@ RSpec.describe 'UserDrugs', type: :request do
     end
   end
 
-  describe 'PATCH /api/v1/users/:id/drugs' do
+  describe 'PATCH /api/v1/user_drugs/:id' do
     before { post "/api/v1/user_drugs", params: valid_attributes } 
     context "when the request is valid" do
       
       it "edits existing userdrug" do
-        user_drug = UserDrug.last
-        patch "/api/v1/user_drugs/#{user_drug.id}", params: edit_attributes
+        patch "/api/v1/user_drugs/#{UserDrug.last.id}", params: edit_attributes
 
         expect(response).to have_http_status(:ok)
         expect(response.body).to match(/User-Drug relation successfully updated/)
@@ -71,6 +70,26 @@ RSpec.describe 'UserDrugs', type: :request do
     end
 
     context "when the request is invalid" do
+
+      it "returns a validation failure message" do
+        patch "/api/v1/user_drugs/#{UserDrug.last.id}", params: { user_drug: { user_id: "" } }
+        expect(response.body).to match(/ERROR: Unable to edit user-drug/)
+      end
+    end
+  end
+
+  describe 'DESTROY /api/v1/users_drugs/:id' do
+    before { delete "/api/v1/user_drugs", params: valid_attributes } 
+    context "when the request is valid" do
+      
+      it "deletes existing userdrug" do
+        delete "/api/v1/user_drugs/#{UserDrug.last.id}"
+
+        expect(response).to have_http_status(:no_content)
+      end
+    end
+
+    xcontext "when the request is invalid" do
 
       it "returns a validation failure message" do
         user_drug = UserDrug.last
