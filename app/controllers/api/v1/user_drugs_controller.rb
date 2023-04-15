@@ -22,6 +22,15 @@ class Api::V1::UserDrugsController < ApplicationController
     end
   end
 
+  def destroy
+    if UserDrug.exists?(params[:id])
+      @user_drug = UserDrug.find(params[:id])
+      @user_drug.destroy
+    else
+      render json:{error: "ERROR: User_drug not found"}, status: :bad_request
+    end   
+  end
+
 	private
 	def user_drug_params
 		params.require(:user_drug).permit(:user_id, :drug_id, :dose1, :dose2, :dose3, :prn, :notes)

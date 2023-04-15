@@ -79,7 +79,7 @@ RSpec.describe 'UserDrugs', type: :request do
   end
 
   describe 'DESTROY /api/v1/users_drugs/:id' do
-    before { delete "/api/v1/user_drugs", params: valid_attributes } 
+    before { post "/api/v1/user_drugs", params: valid_attributes } 
     context "when the request is valid" do
       
       it "deletes existing userdrug" do
@@ -89,12 +89,12 @@ RSpec.describe 'UserDrugs', type: :request do
       end
     end
 
-    xcontext "when the request is invalid" do
+    context "when the request is invalid" do
 
       it "returns a validation failure message" do
         user_drug = UserDrug.last
-        patch "/api/v1/user_drugs/#{user_drug.id}", params: { user_drug: { user_id: "" } }
-        expect(response.body).to match(/ERROR: Unable to edit user-drug/)
+        delete "/api/v1/user_drugs/99999999999999"
+        expect(response.body).to match(/ERROR: User_drug not found/)
       end
     end
   end
