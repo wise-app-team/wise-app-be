@@ -8,5 +8,6 @@ class UserSerializer
              :street_address,
              :city,
              :state,
-             :zip_code
+             :zip_code,
+						 :drugs
 end
