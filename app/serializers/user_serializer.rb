@@ -1,7 +1,9 @@
 class UserSerializer
   include JSONAPI::Serializer
-  attributes :name, 
-             :email,
+  attributes :name,
+						 :email,
+						 :provider,
+						 :token,
              :password_digest,
              :birthday,
              :phone_number,
@@ -9,5 +11,6 @@ class UserSerializer
              :city,
              :state,
              :zip_code,
-						 :drugs
+						 :drugs,
+						 :user_drugs
 end
