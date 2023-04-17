@@ -32,6 +32,18 @@ class Api::V1::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :birthday, :phone_number, :street_address, :city, :state, :zip_code)
+    params.require(:user).permit(
+      :name, 
+      :email, 
+      :password, 
+      :birthday, 
+      :phone_number, 
+      :street_address, 
+      :city, 
+      :state, 
+      :zip_code,
+      :google_id,
+      :google_token
+    )
   end
 end
