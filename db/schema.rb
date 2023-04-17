@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_14_000335) do
     t.string "city"
     t.string "state"
     t.string "zip_code"
+    t.string "token"
+    t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

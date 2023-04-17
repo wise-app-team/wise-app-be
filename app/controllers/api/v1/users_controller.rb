@@ -1,23 +1,44 @@
 class Api::V1::UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render json: UserSerializer.new(@user), status: :created
+    # Check if user exists with this email
+    if User.exists?(email: user_params[:email])
+      render json: {error: "ERROR: User with this email already exists"}, status: :bad_request and return
+    end
 
-    else 
-      render json:{error: "ERROR: User not created"}, status: :bad_request
+    # Create user
+    @user = User.new(user_params)
+    # If using OAuth, save without password
+    if @user.from_oauth?
+			@user.password = SecureRandom.hex(10)
+			@user.password_confirmation = @user.password
+			if @user.save!
+        render json: UserSerializer.new(@user), status: :created
+      else 
+        render json:{error: "ERROR: User not created"}, status: :bad_request
+      end	
+			# If using password, validate password and save with password
+    elsif @user.save!
+        render json: UserSerializer.new(@user), status: :created
+		else
+			render json: {error: "ERROR: User not created", messages: @user.errors.full_messages}, status: :bad_request
     end
   end
 
   def update
     @user = User.find(params[:id])
 
-    @user.update(user_params)
+    # If using OAuth, update without password
+    if @user.from_oauth?
+      @user.update(user_params.except(:password, :password_confirmation))
+    # If using password, validate password and update with password
+    else
+      @user.update(user_params)
+    end
+
     if @user.save
       render json: UserSerializer.new(@user), status: :ok
-
     else 
-      render json:{error: "ERROR: Unable to edit user"}, status: :bad_request
+      render json:{error: "ERROR: Unable to edit user", messages: @user.errors.full_messages}, status: :bad_request
     end
   end
 
@@ -29,9 +50,11 @@ class Api::V1::UsersController < ApplicationController
       render json:{error: "ERROR: User not found"}, status: :bad_request
     end   
   end
-
+  
   private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :birthday, :phone_number, :street_address, :city, :state, :zip_code)
-  end
+
+def user_params
+  params.require(:user).permit(:name, :email, :password, :password_confirmation, :birthday, :phone_number, :street_address, :city, :state, :zip_code, :token, :provider)
+end
+
 end

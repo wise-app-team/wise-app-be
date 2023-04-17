@@ -2,7 +2,7 @@ class Api::V1::UserDrugsController < ApplicationController
   def create
     @user_drug = UserDrug.new(user_drug_params)
     if @user_drug.save
-      render json: UserSerializer.new(@user_drug.user), status: :created
+		render json: UserSerializer.new(@user_drug.user), status: :created
 		else
       render json: {error: "ERROR: User drug not created"}, status: :bad_request
     end

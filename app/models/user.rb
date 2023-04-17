@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   has_many :user_drugs
   has_many :drugs, through: :user_drugs
-  has_secure_password
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, presence: true
-  validates :street_address, presence: true
-  validates :city, presence: true
-  validates :state, presence: true
-  validates :zip_code, presence: true
+ 
+  has_secure_password
+
+  # Allow users to sign up with OAuth providers
+  def from_oauth?
+    provider.present?
+  end
 end
