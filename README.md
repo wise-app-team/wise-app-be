@@ -203,7 +203,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
   <img src="https://avatars.githubusercontent.com/u/114712752?v=4" alt="Profile" width="80" height="80">
   <p align="center">
     Kassandra Leyba<br>
-    <a href="https://github.com/kassandraleyba">Github: https://github.com/kassandraleyba</a>
+    <a href="https://github.com/kassandraleyba">Github: kassandraleyba</a>
   </p>
 </div>
 
@@ -254,6 +254,25 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 * ["The Best README Template" by Github User othneil](https://github.com/othneildrew/Best-README-Template)
 * []()
 * []()
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GEMS -->
+## Gems
+
+* [New Relic RPM](https://docs.newrelic.com/docs/apm/agents/ruby-agent/configuration/ruby-agent-configuration/)
+* [Faraday](https://github.com/lostisland/faraday)
+* [RuboCop](https://github.com/rubocop/rubocop-rails)
+* [Figaro](https://github.com/laserlemon/figaro)
+* [JSON API Serializer](https://github.com/jsonapi-serializer/jsonapi-serializer)
+* [WebMock](https://github.com/bblimke/webmock)
+* [Shoulda Matchers for Rails](https://github.com/thoughtbot/shoulda-matchers#rails-apps)
+* [FactoryBot Rails](https://github.com/thoughtbot/factory_bot_rails)
+* [Faker](https://github.com/faker-ruby/faker#generators)
+* [Orderly](https://github.com/jmondo/orderly)
+* [Launchy]()
+* [Capybara]()
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
