@@ -13,4 +13,5 @@ Rails.application.routes.draw do
       resources :user_drugs, only: %i[create update destroy]
     end
   end
+  post '/api/v1/users/login', to: 'api/v1/sessions#create'
 end

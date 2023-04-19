@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Users", type: :request do
   describe "POST /api/v1/users" do
     let(:valid_attributes) do
@@ -137,6 +138,35 @@ RSpec.describe "Users", type: :request do
 
       it "returns a validation failure message" do
         expect(response.body).to match(/ERROR: User not found/)
+      end
+    end
+  end
+
+  describe "Login /api/v1/users/login" do
+    let(:valid_attributes) do
+{
+          name: "John Doe",
+          email: "john@john.com",
+          password: "password",
+          password_confirmation: "password",
+          birthday: "01/01/1999",
+          phone_number: "1234567890",
+          street_address: "123 Main St",
+          city: "Denver",
+          state: 'NY',
+          zip_code: '12345'
+        }
+
+    end
+
+    context "when the request is valid" do
+      it 'logs in a user' do
+        user1 = User.create!(name: "John Doe", email: "john@john.com", password: "password", password_confirmation: "password", birthday: "01/01/1999", phone_number: "1234567890", street_address: "123 Main St", city: "Denver", state: "NY", zip_code: "12345")
+
+        post "/api/v1/users/login", params: valid_attributes
+        
+        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(200)
       end
     end
   end
