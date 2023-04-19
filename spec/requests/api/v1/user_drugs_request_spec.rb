@@ -96,4 +96,21 @@ RSpec.describe 'UserDrugs', type: :request do
       end
     end
   end
+
+	describe 'GET /api/v1/find_by_rxcui' do
+		before { get "/api/v1/find_by_rxcui?rxcui=#{drug.rxcui}" }
+
+		it 'returns a drug' do
+			expect(response).to have_http_status(:ok)
+		end
+	end
+	
+	describe 'GET /api/v1/find_by_rxcui' do
+		before { get "/api/v1/find_by_rxcui?rxcui=#{drug.rxcui}" }
+
+		it 'returns a drug' do
+			expect(response).to have_http_status(:ok)
+		end
+	end
+
 end
