@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe "Drugs", type: :request do
   describe "POST /api/v1/drugs" do
     let(:valid_attributes) do

@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def from_oauth?
     provider.present?
   end
+
+  def find_by_email(email)
+    User.find_by(email: email)
+  end
 end

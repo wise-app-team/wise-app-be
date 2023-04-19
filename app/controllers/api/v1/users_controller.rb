@@ -14,7 +14,7 @@ class Api::V1::UsersController < ApplicationController
 			if @user.save!
         render json: UserSerializer.new(@user), status: :created
       else 
-        render json:{error: "ERROR: User not created"}, status: :bad_request
+        render json:{error: "ERROR: User not created"}, status: 422
       end	
 			# If using password, validate password and save with password
     elsif @user.save!
@@ -23,6 +23,18 @@ class Api::V1::UsersController < ApplicationController
 			render json: {error: "ERROR: User not created", messages: @user.errors.full_messages}, status: :bad_request
     end
   end
+
+  # def login 
+  #   binding.pry
+  #   @user = User.find_by(params[:email])
+
+  #   if @user.email == params[:email] && @user.authenticate(params[:password])
+  #     render json: UserSerializer.new(@user), status: 200
+  #   else
+  #     render json: {error: "ERROR: Invalid email or password"}, status: 400
+  #   end
+
+  # end
 
   def update
     @user = User.find(params[:id])
@@ -53,8 +65,7 @@ class Api::V1::UsersController < ApplicationController
   
   private
 
-def user_params
-  params.require(:user).permit(:name, :email, :password, :password_confirmation, :birthday, :phone_number, :street_address, :city, :state, :zip_code, :token, :provider)
-end
-
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :birthday, :phone_number, :street_address, :city, :state, :zip_code, :token, :provider)
+  end
 end

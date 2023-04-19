@@ -14,4 +14,12 @@ RSpec.describe User, type: :model do
     it { should have_many(:drugs) }
     it { should have_many(:user_drugs) }
   end
+
+  describe 'instance methods' do
+    it 'can find a user by email' do
+      user = User.create(name: 'Test User', email: 'email@email.com', password: 'password', password_confirmation: 'password')
+
+      expect(user.find_by_email(user.email)).to eq(user)
+    end
+  end
 end
