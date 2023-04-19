@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       resources :user_drugs, only: %i[create update destroy]
     end
   end
-  
+
   get "api/v1/users/:email", to: "api/v1/users#show"
+  post '/api/v1/users/login', to: 'api/v1/sessions#create'
+	get '/api/v1/find_by_rxcui', to: 'api/v1/drugs#find_by_rxcui'
 end
