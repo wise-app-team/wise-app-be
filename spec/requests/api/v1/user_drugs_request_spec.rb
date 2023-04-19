@@ -107,10 +107,15 @@ RSpec.describe 'UserDrugs', type: :request do
 	
 	describe 'GET /api/v1/find_by_rxcui' do
 		before { get "/api/v1/find_by_rxcui?rxcui=#{drug.rxcui}" }
-
+	
 		it 'returns a drug' do
 			expect(response).to have_http_status(:ok)
+			expect(response.body).to eq({ data: {
+				id: drug.id.to_s,
+				type: "drug"
+			} }.to_json)
 		end
 	end
+	
 
 end
