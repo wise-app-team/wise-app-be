@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     end
   end
   post '/api/v1/users/login', to: 'api/v1/sessions#create'
+  get "/api/v1/users/:email", to: "api/v1/users#show"
 end

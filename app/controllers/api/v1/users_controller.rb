@@ -37,8 +37,10 @@ class Api::V1::UsersController < ApplicationController
   # end
 	def show
 		if User.exists?(email: user_params[:email])
-			@user = User.find_by(email: user_params[:email])
-      render json: UserSerializer.new(@user), status: :ok
+      user = User.find_by(email: "#{params[:email]}.#{params[:format]}")
+      render json: UserSerializer.new(user), status: :ok
+			# @user = User.find_by(email: user_params[:email])
+      # render json: UserSerializer.new(@user), status: :ok
     else
 			render json: {error: "ERROR: User not found"}, status: :bad_request
 		end
