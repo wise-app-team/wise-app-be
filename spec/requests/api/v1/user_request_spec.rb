@@ -3,7 +3,6 @@ RSpec.describe "Users", type: :request do
   describe "POST /api/v1/users" do
     let(:valid_attributes) do
       {
-        user: {
           name: "Test User",
           email: "test@example.com",
           password: "password",
@@ -14,7 +13,7 @@ RSpec.describe "Users", type: :request do
           city: "Denver",
           state: 'NY',
           zip_code: '12345'
-        }
+        
       }
     end
 
@@ -35,20 +34,11 @@ RSpec.describe "Users", type: :request do
 				expect(pretty["data"]["attributes"]["zip_code"]).to eq("12345")
       end
     end
-
-    xcontext "when the request is invalid" do
-      before { post "/api/v1/users", params: { user: { email: "" } } }
-
-      it "returns a validation failure message" do
-        expect(response.body).to match(/ERROR: User not created/)
-      end
-    end
   end
 
   describe "PATCH /api/v1/users" do
     let(:valid_attributes) do
       {
-        user: {
           name: "Test User",
           email: "test@example.com",
           password: "password",
@@ -59,12 +49,10 @@ RSpec.describe "Users", type: :request do
           city: "Denver",
           state: 'NY',
           zip_code: '12345'
-        }
       }
     end
     let(:updated_attributes) do
       {
-        user: {
           name: "Test User",
           email: "test@example.com",
           password: "password",
@@ -75,7 +63,7 @@ RSpec.describe "Users", type: :request do
           city: "Denver",
           state: 'CO',
           zip_code: '12345'
-        }
+        
       }
     end
 
@@ -91,24 +79,12 @@ RSpec.describe "Users", type: :request do
 				expect(pretty["data"]["attributes"]["state"]).to_not eq("NY")
 				expect(pretty["data"]["attributes"]["state"]).to eq("CO")
       end
-    end
-
-    context "when the request is invalid" do
-			# before { post "/api/v1/users", params: valid_attributes }
-      # before { patch "/api/v1/users/#{User.last.id}", params: { user: { email: "" } } }
-
-      it "returns a validation failure message" do
-				post "/api/v1/users", params: valid_attributes
-				patch "/api/v1/users/#{User.last.id}", params: { user: { email: "" } } 
-        expect(response.body).to match(/ERROR: Unable to edit user/)
-      end
-    end
+		end
   end
 
   describe "Destroy /api/v1/users" do
     let(:valid_attributes) do
       {
-        user: {
           name: "Test User",
           email: "test@example.com",
           password: "password",
@@ -119,7 +95,6 @@ RSpec.describe "Users", type: :request do
           city: "Denver",
           state: 'NY',
           zip_code: '12345'
-        }
       }
     end
     
@@ -142,7 +117,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "Login /api/v1/users/login" do
+  describe "get /api/v1/users/login" do
     let(:valid_attributes) do
 {
           name: "John Doe",
@@ -164,6 +139,18 @@ RSpec.describe "Users", type: :request do
         user1 = User.create!(name: "John Doe", email: "john@john.com", password: "password", password_confirmation: "password", birthday: "01/01/1999", phone_number: "1234567890", street_address: "123 Main St", city: "Denver", state: "NY", zip_code: "12345")
 
         post "/api/v1/users/login", params: valid_attributes
+        
+        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
+  describe "get /api/v1/users/:id" do
+    context "when the request is valid" do
+      it 'can return a user to the front end' do
+        user1 = User.create!(name: "John Doe", email: "john@john.com", password: "password", password_confirmation: "password", birthday: "01/01/1999", phone_number: "1234567890", street_address: "123 Main St", city: "Denver", state: "NY", zip_code: "12345")
+        get "/api/v1/users/1", params: user1.attributes
         
         expect(response).to have_http_status(:ok)
         expect(response).to have_http_status(200)

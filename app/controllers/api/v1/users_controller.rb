@@ -35,6 +35,14 @@ class Api::V1::UsersController < ApplicationController
   #   end
 
   # end
+	def show
+		if User.exists?(email: user_params[:email])
+			@user = User.find_by(email: user_params[:email])
+      render json: UserSerializer.new(@user), status: :ok
+    else
+			render json: {error: "ERROR: User not found"}, status: :bad_request
+		end
+	end
 
   def update
     @user = User.find(params[:id])
