@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :drugs, only: %i[create]
-      resources :users, only: %i[create show update destroy]
+      resources :users, only: %i[create update destroy]
       resources :user_drugs, only: %i[create update destroy]
     end
   end
+
+  get "api/v1/users/:email", to: "api/v1/users#show"
   post '/api/v1/users/login', to: 'api/v1/sessions#create'
 	get '/api/v1/find_by_rxcui', to: 'api/v1/drugs#find_by_rxcui'
 end

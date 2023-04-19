@@ -14,5 +14,6 @@ class User < ApplicationRecord
 
   def find_by_email(email)
     User.find_by(email: email)
+    # binding.pry
   end
 end
