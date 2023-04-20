@@ -19,6 +19,6 @@ class Api::V1::DrugsController < ApplicationController
 
   private
   def drug_params
-    params.require(:drug).permit(:name, :rxcui, :synonym)
+    params.permit(:name, :rxcui, :synonym)
   end
 end
