@@ -2,7 +2,7 @@ class Api::V1::UsersController < ApplicationController
   def show
     # For whatever reason, the email was being broken into 2 parts (email + format)
     # user = User.find_by(email: "#{params[:email]}.#{params[:format]}")
-    user = User.Find(params[:id])
+    user = User.find(params[:id])
     render json: UserSerializer.new(user)
   end
   
