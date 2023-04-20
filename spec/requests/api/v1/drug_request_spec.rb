@@ -4,11 +4,9 @@ RSpec.describe "Drugs", type: :request do
   describe "POST /api/v1/drugs" do
     let(:valid_attributes) do
       {
-        drug: {
           rxcui: "1234567890",
           name: "Test Drug",
           synonym: "Test Synonym"
-        }
       }
     end
 
