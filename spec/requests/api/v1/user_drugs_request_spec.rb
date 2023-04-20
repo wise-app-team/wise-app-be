@@ -16,17 +16,15 @@ RSpec.describe 'UserDrugs', type: :request do
                             synonym: 'yes',
                             rxcui: '55559') }
   let(:valid_attributes) do
-    {
-      user_drug: {
+   {
         user_id: user.id,
         drug_id: drug.id,
         dose1: Time.now,
         dose2: Time.now+1.hour,
         dose3: Time.now+2.hours,
         prn: false,
-        text: 'Take this drug'
+        notes: 'Take this drug'
       }
-    }
   end
 
   let(:edit_attributes) do
@@ -70,7 +68,7 @@ RSpec.describe 'UserDrugs', type: :request do
     context "when the request is invalid" do
 
       it "returns a validation failure message" do
-        patch "/api/v1/user_drugs/#{UserDrug.last.id}", params: { user_drug: { user_id: "" } }
+        patch "/api/v1/user_drugs/#{UserDrug.last.id}", params: { user_id: "" } 
         expect(response.body).to match(/ERROR: Unable to edit user-drug/)
       end
     end
