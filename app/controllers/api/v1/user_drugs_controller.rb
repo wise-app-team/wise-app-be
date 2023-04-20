@@ -10,6 +10,7 @@ class Api::V1::UserDrugsController < ApplicationController
   end
 
   def update
+    # binding.pry
     @user_drug = UserDrug.find(params[:id])
 
     @user_drug.update(user_drug_params)
