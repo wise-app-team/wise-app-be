@@ -150,7 +150,7 @@ RSpec.describe "Users", type: :request do
     context "when the request is valid" do
       it 'can return a user to the front end' do
         user1 = User.create!(name: "John Doe", email: "john@john.com", password: "password", password_confirmation: "password", birthday: "01/01/1999", phone_number: "1234567890", street_address: "123 Main St", city: "Denver", state: "NY", zip_code: "12345")
-        get "/api/v1/users/1", params: user1.attributes
+        get "/api/v1/users/#{user1.id}", params: user1.attributes
         
         expect(response).to have_http_status(:ok)
         expect(response).to have_http_status(200)
