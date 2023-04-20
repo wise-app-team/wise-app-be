@@ -1,8 +1,9 @@
 class Api::V1::UserDrugsController < ApplicationController
   def create
+    # require 'pry'; binding.pry
     @user_drug = UserDrug.new(user_drug_params)
     if @user_drug.save
-		render json: UserSerializer.new(@user_drug.user), status: :created
+		  render json: UserSerializer.new(@user_drug.user), status: :created
 		else
       render json: {error: "ERROR: User drug not created"}, status: :bad_request
     end
@@ -32,6 +33,7 @@ class Api::V1::UserDrugsController < ApplicationController
 
 	private
 	def user_drug_params
-		params.require(:user_drug).permit(:user_id, :drug_id, :dose1, :dose2, :dose3, :prn, :notes)
+		# params.require(:user_drug).permit(:user_id, :drug_id, :dose1, :dose2, :dose3, :prn, :notes)
+		params.permit(:user_id, :drug_id, :dose1, :dose2, :dose3, :prn, :notes)
 	end
 end
