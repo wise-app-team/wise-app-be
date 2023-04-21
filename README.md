@@ -209,6 +209,7 @@ Don't forget to give the project a star! Thanks again!
   <p align="center">
     Kassandra Leyba<br>
     <a href="https://github.com/kassandraleyba">Github: kassandraleyba</a>
+    <p><a href="https://www.linkedin.com/in/kassandra-leyba/">LinkedIn: kassandra-leyba</a></p>
   </p>
 </div>
 
@@ -217,6 +218,7 @@ Don't forget to give the project a star! Thanks again!
   <p align="center">
     Bradley Dunlap<br>
     <a href="https://github.com/brad-dunlap">Github: brad-dunlap</a>
+    <p><a href="https://www.linkedin.com/in/dunlap-brad/">LinkedIn: dunlap-brad</a></p>
   </p>
 </div>
 
@@ -225,6 +227,7 @@ Don't forget to give the project a star! Thanks again!
   <p align="center">
     Meredith Trevino<br>
     <a href="https://github.com/MATrevino">Github: MATrevino</a>
+    <p><a href="https://www.linkedin.com/in/meredith-trevino/">LinkedIn: meredith-trevino</a></p>
   </p>
 </div>
 
@@ -233,6 +236,7 @@ Don't forget to give the project a star! Thanks again!
   <p align="center">
     Max MacGillivray<br>
     <a href="https://github.com/MoxieMax">Github: MoxieMax</a>
+    <p><a href="https://www.linkedin.com/in/max-macgillivray/">LinkedIn: max-macgillivray</a></p>
   </p>
 </div>
 
@@ -241,6 +245,7 @@ Don't forget to give the project a star! Thanks again!
   <p align="center">
     Isaac Alter<br>
     <a href="https://github.com/Isaac3924">Github: Isaac3924</a>
+    <p><a href="https://www.linkedin.com/in/isaacalter/">LinkedIn: isaacalter</a></p>
   </p>
 </div>
 
