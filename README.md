@@ -183,7 +183,580 @@ See the [open issues](https://github.com/wise-app-team/wise-app-be/issues) for a
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+Below are the endpoints for the WiseApp. The base URL is https://http://localhost:5000/api/v1/ and all endpoints are relative to that URL. Until we have a production environment, the base URL will be the same for all environments.
 
+Endpoint for user dashboard/user show:
+```sh
+http://localhost:5000/api/v1/users/1
+```
+Response:
+```sh
+{
+    "data": {
+        "id": "1",
+        "type": "user",
+        "attributes": {
+            "name": "John Doe",
+            "email": "john@john.com",
+            "provider": null,
+            "token": null,
+            "password_digest": "$2a$12$5KMMwAVfpbBqpo7gNyIBkuHL6b2PmLj2T6TEJi906fW/po1cllVbO",
+            "birthday": "1999-01-01",
+            "phone_number": "1234567890",
+            "street_address": "123 Main St",
+            "city": "Denver",
+            "state": "NY",
+            "zip_code": "12345",
+            "drugs": [
+                {
+                    "id": 1,
+                    "rxcui": "209459",
+                    "name": "acetaminophen 500 MG Oral Tablet [Tylenol]",
+                    "synonym": "Tylenol 500 MG Oral Tablet",
+                    "created_at": "2023-04-20T21:28:45.099Z",
+                    "updated_at": "2023-04-20T21:28:45.099Z"
+                },
+                {
+                    "id": 2,
+                    "rxcui": "541894",
+                    "name": "amphetamine aspartate 2.5 MG / amphetamine sulfate 2.5 MG / dextroamphetamine saccharate 2.5 MG / dextroamphetamine sulfate 2.5 MG Oral Tablet [Adderall]",
+                    "synonym": "Adderall 10 MG Oral Tablet",
+                    "created_at": "2023-04-20T21:28:45.112Z",
+                    "updated_at": "2023-04-20T21:28:45.112Z"
+                },
+                {
+                    "id": 3,
+                    "rxcui": "828557",
+                    "name": "acetaminophen 160 MG Chewable Tablet [Tylenol]",
+                    "synonym": "Tylenol 160 MG Chewable Tablet",
+                    "created_at": "2023-04-20T21:29:52.294Z",
+                    "updated_at": "2023-04-20T21:29:52.294Z"
+                },
+                {
+                    "id": 5,
+                    "rxcui": "2374361",
+                    "name": "acetaminophen 500 MG Oral Powder [Tylenol]",
+                    "synonym": "Tylenol 500 MG Oral Powder",
+                    "created_at": "2023-04-20T21:41:45.717Z",
+                    "updated_at": "2023-04-20T21:41:45.717Z"
+                }
+            ],
+            "user_drugs": [
+                {
+                    "id": 1,
+                    "user_id": 1,
+                    "drug_id": 1,
+                    "dose1": "2000-01-01T09:00:00.000Z",
+                    "dose2": "2000-01-01T12:00:00.000Z",
+                    "dose3": "2000-01-01T19:00:00.000Z",
+                    "prn": true,
+                    "notes": "Take with food",
+                    "created_at": "2023-04-20T21:28:45.134Z",
+                    "updated_at": "2023-04-20T21:28:45.134Z"
+                },
+                {
+                    "id": 2,
+                    "user_id": 1,
+                    "drug_id": 2,
+                    "dose1": "2000-01-01T09:00:00.000Z",
+                    "dose2": null,
+                    "dose3": null,
+                    "prn": false,
+                    "notes": "Take with food and water",
+                    "created_at": "2023-04-20T21:28:45.148Z",
+                    "updated_at": "2023-04-20T21:28:45.148Z"
+                },
+                {
+                    "id": 4,
+                    "user_id": 1,
+                    "drug_id": 3,
+                    "dose1": "2000-01-01T16:29:00.000Z",
+                    "dose2": null,
+                    "dose3": null,
+                    "prn": true,
+                    "notes": "take this with a smile",
+                    "created_at": "2023-04-20T21:30:00.880Z",
+                    "updated_at": "2023-04-20T21:30:00.880Z"
+                },
+                {
+                    "id": 5,
+                    "user_id": 1,
+                    "drug_id": 5,
+                    "dose1": "2000-01-01T15:42:00.000Z",
+                    "dose2": "2000-01-01T15:42:00.000Z",
+                    "dose3": null,
+                    "prn": false,
+                    "notes": "oh yeah",
+                    "created_at": "2023-04-20T21:42:41.845Z",
+                    "updated_at": "2023-04-20T21:42:41.845Z"
+                }
+            ]
+        }
+    }
+}
+```
+
+Endpoint for drug search:
+```sh
+https://rxnav.nlm.nih.gov/REST/drugs.json?name=Tylenol
+```
+Response:
+```sh
+{
+    "drugGroup": {
+        "name": null,
+        "conceptGroup": [
+            {
+                "tty": "BPCK"
+            },
+            {
+                "tty": "SBD",
+                "conceptProperties": [
+                    {
+                        "rxcui": "1243440",
+                        "name": "8 HR acetaminophen 650 MG Extended Release Oral Tablet [Tylenol]",
+                        "synonym": "Tylenol 650 MG 8 HR Extended Release Oral Tablet",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "1738139",
+                        "name": "acetaminophen 325 MG Oral Capsule [Tylenol]",
+                        "synonym": "Tylenol 325 MG Oral Capsule",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "209387",
+                        "name": "acetaminophen 325 MG Oral Tablet [Tylenol]",
+                        "synonym": "Tylenol 325 MG Oral Tablet",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "209459",
+                        "name": "acetaminophen 500 MG Oral Tablet [Tylenol]",
+                        "synonym": "Tylenol 500 MG Oral Tablet",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "2178758",
+                        "name": "acetaminophen 160 MG Oral Powder [Tylenol]",
+                        "synonym": "Tylenol 160 MG Oral Powder",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "2374361",
+                        "name": "acetaminophen 500 MG Oral Powder [Tylenol]",
+                        "synonym": "Tylenol 500 MG Oral Powder",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "828555",
+                        "name": "acetaminophen 32 MG/ML Oral Suspension [Tylenol]",
+                        "synonym": "Tylenol 32 MG/ML Oral Suspension",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    },
+                    {
+                        "rxcui": "828557",
+                        "name": "acetaminophen 160 MG Chewable Tablet [Tylenol]",
+                        "synonym": "Tylenol 160 MG Chewable Tablet",
+                        "tty": "SBD",
+                        "language": "ENG",
+                        "suppress": "N",
+                        "umlscui": ""
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
+Endpoint for drug interactions:
+```sh
+https://rxnav.nlm.nih.gov/REST/interaction/list.json?rxcuis=207106%20152923%20656659%20209459
+```
+Response:
+```sh
+{
+    "nlmDisclaimer": "It is not the intention of NLM to provide specific medical advice, but rather to provide users with information to better understand their health and their medications. NLM urges you to consult with a qualified physician for advice about medications.",
+    "fullInteractionTypeGroup": [
+        {
+            "sourceDisclaimer": "DrugBank is intended for educational and scientific research purposes only and you expressly acknowledge and agree that use of DrugBank is at your sole risk. The accuracy of DrugBank information is not guaranteed and reliance on DrugBank shall be at your sole risk. DrugBank is not intended as a substitute for professional medical advice, diagnosis or treatment..[www.drugbank.ca]",
+            "sourceName": "DrugBank",
+            "fullInteractionType": [
+                {
+                    "comment": "Drug1 (rxcui = 152923, name = simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 207106, name = fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug1 is resolved to simvastatin, Drug2 is resolved to fluconazole and interaction asserted in DrugBank between Simvastatin and Fluconazole.",
+                    "minConcept": [
+                        {
+                            "rxcui": "152923",
+                            "name": "simvastatin 40 MG Oral Tablet [Zocor]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "207106",
+                            "name": "fluconazole 50 MG Oral Tablet [Diflucan]",
+                            "tty": "SBD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "36567",
+                                        "name": "simvastatin",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00641",
+                                        "name": "Simvastatin",
+                                        "url": "https://go.drugbank.com/drugs/DB00641#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "4450",
+                                        "name": "fluconazole",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00196",
+                                        "name": "Fluconazole",
+                                        "url": "https://go.drugbank.com/drugs/DB00196#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The metabolism of Simvastatin can be decreased when combined with Fluconazole."
+                        }
+                    ]
+                },
+                {
+                    "comment": "Drug1 (rxcui = 152923, name = simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 656659, name = bosentan 125 MG Oral Tablet, tty = SCD). Drug1 is resolved to simvastatin, Drug2 is resolved to bosentan and interaction asserted in DrugBank between Simvastatin and Bosentan. Drug1 is resolved to simvastatin, Drug2 is resolved to bosentan anhydrous and interaction asserted in DrugBank between Simvastatin and Bosentan.",
+                    "minConcept": [
+                        {
+                            "rxcui": "152923",
+                            "name": "simvastatin 40 MG Oral Tablet [Zocor]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "656659",
+                            "name": "bosentan 125 MG Oral Tablet",
+                            "tty": "SCD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "36567",
+                                        "name": "simvastatin",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00641",
+                                        "name": "Simvastatin",
+                                        "url": "https://go.drugbank.com/drugs/DB00641#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "1468845",
+                                        "name": "bosentan anhydrous",
+                                        "tty": "PIN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00559",
+                                        "name": "Bosentan",
+                                        "url": "https://go.drugbank.com/drugs/DB00559#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The serum concentration of Simvastatin can be decreased when it is combined with Bosentan."
+                        },
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "36567",
+                                        "name": "simvastatin",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00641",
+                                        "name": "Simvastatin",
+                                        "url": "https://go.drugbank.com/drugs/DB00641#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "75207",
+                                        "name": "bosentan",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00559",
+                                        "name": "Bosentan",
+                                        "url": "https://go.drugbank.com/drugs/DB00559#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The serum concentration of Simvastatin can be decreased when it is combined with Bosentan."
+                        }
+                    ]
+                },
+                {
+                    "comment": "Drug1 (rxcui = 207106, name = fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug2 (rxcui = 656659, name = bosentan 125 MG Oral Tablet, tty = SCD). Drug1 is resolved to fluconazole, Drug2 is resolved to bosentan and interaction asserted in DrugBank between Fluconazole and Bosentan. Drug1 is resolved to fluconazole, Drug2 is resolved to bosentan anhydrous and interaction asserted in DrugBank between Fluconazole and Bosentan.",
+                    "minConcept": [
+                        {
+                            "rxcui": "207106",
+                            "name": "fluconazole 50 MG Oral Tablet [Diflucan]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "656659",
+                            "name": "bosentan 125 MG Oral Tablet",
+                            "tty": "SCD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "4450",
+                                        "name": "fluconazole",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00196",
+                                        "name": "Fluconazole",
+                                        "url": "https://go.drugbank.com/drugs/DB00196#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "1468845",
+                                        "name": "bosentan anhydrous",
+                                        "tty": "PIN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00559",
+                                        "name": "Bosentan",
+                                        "url": "https://go.drugbank.com/drugs/DB00559#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The metabolism of Bosentan can be decreased when combined with Fluconazole."
+                        },
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "4450",
+                                        "name": "fluconazole",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00196",
+                                        "name": "Fluconazole",
+                                        "url": "https://go.drugbank.com/drugs/DB00196#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "75207",
+                                        "name": "bosentan",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00559",
+                                        "name": "Bosentan",
+                                        "url": "https://go.drugbank.com/drugs/DB00559#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The metabolism of Bosentan can be decreased when combined with Fluconazole."
+                        }
+                    ]
+                },
+                {
+                    "comment": "Drug1 (rxcui = 152923, name = simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 209459, name = acetaminophen 500 MG Oral Tablet [Tylenol], tty = SBD). Drug1 is resolved to simvastatin, Drug2 is resolved to acetaminophen and interaction asserted in DrugBank between Simvastatin and Acetaminophen.",
+                    "minConcept": [
+                        {
+                            "rxcui": "152923",
+                            "name": "simvastatin 40 MG Oral Tablet [Zocor]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "209459",
+                            "name": "acetaminophen 500 MG Oral Tablet [Tylenol]",
+                            "tty": "SBD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "36567",
+                                        "name": "simvastatin",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00641",
+                                        "name": "Simvastatin",
+                                        "url": "https://go.drugbank.com/drugs/DB00641#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "161",
+                                        "name": "acetaminophen",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00316",
+                                        "name": "Acetaminophen",
+                                        "url": "https://go.drugbank.com/drugs/DB00316#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The metabolism of Simvastatin can be decreased when combined with Acetaminophen."
+                        }
+                    ]
+                },
+                {
+                    "comment": "Drug1 (rxcui = 207106, name = fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug2 (rxcui = 209459, name = acetaminophen 500 MG Oral Tablet [Tylenol], tty = SBD). Drug1 is resolved to fluconazole, Drug2 is resolved to acetaminophen and interaction asserted in DrugBank between Fluconazole and Acetaminophen.",
+                    "minConcept": [
+                        {
+                            "rxcui": "207106",
+                            "name": "fluconazole 50 MG Oral Tablet [Diflucan]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "209459",
+                            "name": "acetaminophen 500 MG Oral Tablet [Tylenol]",
+                            "tty": "SBD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "4450",
+                                        "name": "fluconazole",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00196",
+                                        "name": "Fluconazole",
+                                        "url": "https://go.drugbank.com/drugs/DB00196#interactions"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "161",
+                                        "name": "acetaminophen",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "DB00316",
+                                        "name": "Acetaminophen",
+                                        "url": "https://go.drugbank.com/drugs/DB00316#interactions"
+                                    }
+                                }
+                            ],
+                            "severity": "N/A",
+                            "description": "The metabolism of Acetaminophen can be decreased when combined with Fluconazole."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "sourceDisclaimer": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3422823/",
+            "sourceName": "ONCHigh",
+            "fullInteractionType": [
+                {
+                    "comment": "Drug1 (rxcui = 152923, name = simvastatin 40 MG Oral Tablet [Zocor], tty = SBD). Drug2 (rxcui = 207106, name = fluconazole 50 MG Oral Tablet [Diflucan], tty = SBD). Drug1 is resolved to simvastatin, Drug2 is resolved to fluconazole and interaction asserted in ONCHigh between simvastatin and fluconazole.",
+                    "minConcept": [
+                        {
+                            "rxcui": "152923",
+                            "name": "simvastatin 40 MG Oral Tablet [Zocor]",
+                            "tty": "SBD"
+                        },
+                        {
+                            "rxcui": "207106",
+                            "name": "fluconazole 50 MG Oral Tablet [Diflucan]",
+                            "tty": "SBD"
+                        }
+                    ],
+                    "interactionPair": [
+                        {
+                            "interactionConcept": [
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "36567",
+                                        "name": "simvastatin",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "NA",
+                                        "name": "simvastatin",
+                                        "url": "NA"
+                                    }
+                                },
+                                {
+                                    "minConceptItem": {
+                                        "rxcui": "4450",
+                                        "name": "fluconazole",
+                                        "tty": "IN"
+                                    },
+                                    "sourceConceptItem": {
+                                        "id": "NA",
+                                        "name": "fluconazole",
+                                        "url": "NA"
+                                    }
+                                }
+                            ],
+                            "severity": "high",
+                            "description": "HMG Co-A reductase inhibitors - CYP3A4 inhibitors"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
 
 <!-- CONTRIBUTING -->
 ## Contributing
